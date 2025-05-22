@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Квіткова мрія</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffafc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    nav {
+      background-color: #ffc0cb;
+      padding: 15px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(204, 51, 102, 0.3);
+      font-weight: 600;
+      letter-spacing: 1px;
+      animation: fadeInDown 1s ease forwards;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #4a0033;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #cc3366;
+    }
+
+    section {
+      padding: 100px 20px 60px;
+      margin-top: 60px;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2 {
+      color: #cc3366;
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: #5a2a3b;
+    }
+    .flower-block {
+      display: inline-block;
+      text-align: center;
+      margin: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(204, 51, 102, 0.2);
+      background: #ffe9f3;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+      animation: fadeInScale 1s ease forwards;
+      opacity: 0;
+    }
+    .flower-block:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(204, 51, 102, 0.35);
+    }
+    .flower-block img {
+      max-width: 250px;
+      border-radius: 15px 15px 0 0;
+      display: block;
+      margin: 0 auto;
+      transition: filter 0.4s ease;
+    }
+    .flower-block:hover img {
+      filter: brightness(110%);
+    }
+    .flower-block h3 {
+      margin: 15px 0 8px;
+      color: #a62956;
+      font-weight: 700;
+      font-size: 1.3em;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      text-decoration: none;
+      margin: 10px auto 20px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 5px 12px rgba(214, 51, 132, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      font-size: 1.1em;
+      display: block;
+      width: max-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn:hover {
+      background-color: #b22e59;
+      box-shadow: 0 8px 20px rgba(178, 46, 89, 0.8);
+      transform: translateY(-3px);
+    }
+
+    form {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff0f5;
+      padding: 30px 35px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(204, 51, 102, 0.2);
+      animation: fadeInUp 1.3s ease forwards;
+      opacity: 0;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #9c366b;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid #dca1b9;
+      font-size: 16px;
+      box-sizing: border-box;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      border-color: #cc3366;
+      outline: none;
+      background-color: #ffe9f3;
+    }
+    button[type="submit"] {
+      background-color: #cc3366;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 20px;
+      font-size: 18px;
+      cursor: pointer;
+font-weight: 700;
+      transition: background-color 0.3s ease, transform 0.15s ease;
+      box-shadow: 0 7px 20px rgba(204, 51, 102, 0.7);
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #b22e59;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(178, 46, 89, 0.8);
+    }
+    button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    #contacts p {
+      font-size: 18px;
+      margin: 8px 0;
+      color: #a64570;
+      font-weight: 600;
+      text-align: center;
+    }
+    #contacts a {
+      color: #cc3366;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    #contacts a:hover {
+      color: #a62956;
+    }
+
+    footer {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #772244;
+      font-weight: 600;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);
+      margin-top: 50px;
+    }
+
+    /* Анімації */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#home">Головна</a>
+  <a href="#flowers">Наші квіти</a>
+  <a href="#order">Замовлення</a>
+  <a href="#contacts">Контакти</a>
+</nav>
+
+<section id="home">
+  <h1>Ласкаво просимо до «Квіткової мрії» 🌸</h1>
+  <p>Ми створюємо букети з любов’ю. У нас — тільки свіжі квіти з найкращих теплиць. Замовити у нас — це подарувати емоцію!</p>
+</section>
+
+<section id="flowers">
+  <h2>Наші квіти 💐</h2>
+
+  <div class="flower-block" style="animation-delay: 0.2s;">
+    <img src="https://i.pinimg.com/736x/7c/1a/0a/7c1a0a3a032e988fb5e4ffdfb7f9d640.jpg" alt="гортензії" />
+    <h3>Гортензії</h3>
+    <p>Ніжні та ароматні квіти для романтичного настрою.</p>
+    <a href="#order" class="btn">Замовити</a>
+  </div>
+
+  <div class="flower-block" style="animation-delay: 0.4s;">
+    <img src="https://i.pinimg.com/736x/5c/e2/87/5ce287ba429bc01163947f3160ff852b.jpg" alt="кустові троянди" />
+    <h3>Кустові троянди</h3>
+    <p>Символ любові та краси.</p>
+    <a href="#order" class="btn">Замовити</a>
+  </div>
+
+  <div class="flower-block" style="animation-delay: 0.6s;">
+    <img src="https://i.pinimg.com/736x/40/70/1d/40701d625b4f8b5ee9e84df85fe6f670.jpg" alt="лілії" />
+    <h3>Лілії</h3>
+    <p>Весняна яскравість у кожній пелюстці!</p>
+    <a href="#order" class="btn">Замовити</a>
+  </div>
+</section>
+
+<section id="order">
+  <h2>Замовити букет 💌</h2>
+  <form>
+    <label for="name">Ваше ім’я</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="phone">Телефон</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="message">Повідомлення (за бажанням)</label>
+    <textarea id="message" name="message" rows="4" placeholder="Наприклад, колір квітів або привід..."></textarea>
+
+    <button type="submit">Відправити замовлення</button>
+  </form>
+</section>
+
+<section id="contacts">
+  <h2>Контакти 📞</h2>
+  <p>Телефон: <a href="tel:+380671234567">+38 (067) 123-45-67</a></p>
+  <p>Email: <a href="mailto:info@kvitkovamriya.ua">info@kvitkovamriya.ua</a></p>
+  <p>Адреса: м. Київ, вул. Квіткова, 15</p>
+  <p>Ми у соцмережах:
+    <a href="https://www.facebook.com/kvitkovamriya" target="_blank" rel="noopener">Facebook</a> |
+    <a href="https://www.instagram.com/kvitkovamriya" target="_blank" rel="noopener">Instagram</a>
+  </p>
+</section>
+
+<footer>
+  © 2025 Квіткова мрія. Всі права захищені.
+</footer>
+
+<script>
+  // Анімація появи заголовків та форми після завантаження сторінки
+  window.addEventListener('DOMContentLoaded', () => {
+    const h1 = document.
+querySelector('#home h1');
+    const h2s = document.querySelectorAll('h2');
+    const form = document.querySelector('form');
+    h1.style.opacity = '1';
+
+    h2s.forEach((h2, i) => {
+      setTimeout(() => {
+        h2.style.opacity = '1';
+        h2.style.transform = 'translateY(0)';
+      }, 300 + i * 300);
+    });
+
+    setTimeout(() => {
+      form.style.opacity = '1';
+      form.style.transform = 'translateY(0)';
+    }, 1200);
+  });
+
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !phone) {
+      alert('Будь ласка, заповніть ім’я та телефон.');
+      return;
+    }
+
+    alert(`Дякуємо, ${name}! Ваше замовлення прийнято. Ми зателефонуємо вам за номером ${phone}.`);
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
